@@ -6,13 +6,14 @@ import com.shelzi.pointeegame.entity.Direction;
 import com.shelzi.pointeegame.service.CouponBoardService;
 
 import java.awt.Point;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static com.shelzi.pointeegame.constant.Constants.MAX_COORDINATE_FOR_MOVEMENT;
 import static com.shelzi.pointeegame.entity.Direction.*;
-import static java.util.stream.Collectors.groupingBy;
 
 public class CouponBoardServiceImpl implements CouponBoardService {
     private static final Lock locker = new ReentrantLock();
@@ -49,10 +50,6 @@ public class CouponBoardServiceImpl implements CouponBoardService {
             }
         }
         return couponList;
-/*        int max = Stream.of(couponBoard.getBoard())
-                .flatMapToInt(IntStream::of)
-                .summaryStatistics().getMax();
-        couponBoard.getBoard().*/
     }
 
     @Override
