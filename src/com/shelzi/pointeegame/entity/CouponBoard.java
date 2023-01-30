@@ -1,8 +1,9 @@
 package com.shelzi.pointeegame.entity;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
-import static com.shelzi.pointeegame.constant.Constants.BOARD_SIZE;
+import static com.shelzi.pointeegame.constant.GameProperty.BOARD_SIZE;
 
 public class CouponBoard {
     private final int[][] board;
@@ -26,8 +27,13 @@ public class CouponBoard {
     }
 
     private String printBoardRows() {
+        int[][] flippedBoard = new int[BOARD_SIZE][BOARD_SIZE];
+        IntStream.range(0, BOARD_SIZE).forEach(i ->
+                IntStream.range(0, BOARD_SIZE).forEach(j -> {
+                    flippedBoard[BOARD_SIZE - 1 - j][i] = board[i][j];
+                }));
         StringBuilder result = new StringBuilder(885);
-        for (int[] row : board) {
+        for (int[] row : flippedBoard) {
             result.append(Arrays.toString(row)).append("\n");
         }
         return result.toString();

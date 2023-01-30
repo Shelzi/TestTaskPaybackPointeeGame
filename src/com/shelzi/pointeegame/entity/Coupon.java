@@ -3,6 +3,8 @@ package com.shelzi.pointeegame.entity;
 import java.awt.Point;
 import java.util.Objects;
 
+import static com.shelzi.pointeegame.constant.GameProperty.INDEX_TO_COORDINATES_OFFSET;
+
 public class Coupon {
     private final int score;
     private final Point coordinates;
@@ -36,6 +38,6 @@ public class Coupon {
     @Override
     public String toString() {
         return String.format("Coupon value: %d. Coupon coordinates: x = %d, y = %d",
-                score, coordinates.x, coordinates.y);
+                score, coordinates.x + INDEX_TO_COORDINATES_OFFSET, coordinates.y + INDEX_TO_COORDINATES_OFFSET);
     }
 }

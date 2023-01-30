@@ -7,7 +7,7 @@ import com.shelzi.pointeegame.service.impl.CouponBoardServiceImpl;
 
 import java.util.List;
 
-import static com.shelzi.pointeegame.constant.Constants.*;
+import static com.shelzi.pointeegame.constant.GameProperty.*;
 
 public class CouponGame {
     private static final CouponBoardService service = CouponBoardServiceImpl.getInstance();

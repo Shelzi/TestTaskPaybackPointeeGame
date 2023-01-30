@@ -12,7 +12,7 @@ import java.util.Random;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.shelzi.pointeegame.constant.Constants.MAX_COORDINATE_FOR_MOVEMENT;
+import static com.shelzi.pointeegame.constant.GameProperty.MAX_COORDINATE_FOR_MOVEMENT;
 import static com.shelzi.pointeegame.entity.Direction.*;
 
 public class CouponBoardServiceImpl implements CouponBoardService {
@@ -64,6 +64,18 @@ public class CouponBoardServiceImpl implements CouponBoardService {
         }
     }
 
+    @Override
+    public void attack(CouponBoard couponBoard) {
+        int[][] board = couponBoard.getBoard();
+        for (int x = 0; x < board.length; x++) {
+            for (int y = 0; y < board.length; y++) {
+                if (board[x][y] != 0) {
+                    movePointee(couponBoard, x, y, findAvailableDirections(x, y));
+                }
+            }
+        }
+    }
+
     private List<Direction> findAvailableDirections(int x, int y) {
         List<Direction> directions = new ArrayList<>();
         if (y < MAX_COORDINATE_FOR_MOVEMENT) {
@@ -79,17 +91,5 @@ public class CouponBoardServiceImpl implements CouponBoardService {
             directions.add(LEFT);
         }
         return directions;
-    }
-
-    @Override
-    public void attack(CouponBoard couponBoard) {
-        int[][] board = couponBoard.getBoard();
-        for (int x = 0; x < board.length; x++) {
-            for (int y = 0; y < board.length; y++) {
-                if (board[x][y] != 0) {
-                    movePointee(couponBoard, x, y, findAvailableDirections(x, y));
-                }
-            }
-        }
     }
 }
