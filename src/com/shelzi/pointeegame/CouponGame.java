@@ -1,15 +1,15 @@
-import entity.Coupon;
-import entity.CouponBoard;
-import service.CouponBoardService;
-import service.impl.CouponBoardServiceImpl;
+package com.shelzi.pointeegame;
+
+import com.shelzi.pointeegame.entity.Coupon;
+import com.shelzi.pointeegame.entity.CouponBoard;
+import com.shelzi.pointeegame.service.CouponBoardService;
+import com.shelzi.pointeegame.service.impl.CouponBoardServiceImpl;
 
 import java.util.List;
 
+import static com.shelzi.pointeegame.constant.Constants.*;
+
 public class CouponGame {
-    private static final int ROUNDS_25 = 25;
-    private static final int ROUNDS_50 = 50;
-    private static final int ROUNDS_100 = 100;
-    private static final int BOARD_SIZE = 15;
     private static final CouponBoardService service = CouponBoardServiceImpl.getInstance();
 
     public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class CouponGame {
     }
 
     public void startGame(int rounds) {
-        CouponBoard couponBoard = new CouponBoard(BOARD_SIZE);
+        CouponBoard couponBoard = new CouponBoard();
         System.out.printf("Start board:\n%s", couponBoard);
         for (int i = 0; i < rounds; i++) {
             service.attack(couponBoard);

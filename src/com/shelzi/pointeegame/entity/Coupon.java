@@ -1,4 +1,4 @@
-package entity;
+package com.shelzi.pointeegame.entity;
 
 import java.awt.Point;
 import java.util.Objects;
